@@ -36,7 +36,7 @@ object initload_tfl {
 //    println("updated DataFrame #1: empty rows in columns filled")
 //
 //    // update #2 >> Rename columns
-    val df_renamed = df_cleaned
+    val df_cleaned = df
       .withColumnRenamed("reason", "reasons")
 //
 //    println("updated DataFrame #2: first, last, city_pop, & trans_date_trans_time  columns renamed")
@@ -76,8 +76,7 @@ object initload_tfl {
 //    println("updated DataFrame #9: duplicates dropped")
 //
 //    // update #10 >> remove " from all routes name
-    val leadingString = '"'
-    val df_modifiedRows = df_distinct.withColumn("route", regexp_replace(col("route"), "^" + leadingString, ""))
+    val df_modifiedRows = df_cleaned.withColumn("route", regexp_replace(col("route"), "\"", ""))
     println("updated DataFrame #10: leading strings in merchant names removed")
     df_modifiedRows.show(5)
 
