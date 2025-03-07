@@ -22,7 +22,7 @@ object initload_tfl {
 
     // Read data from the PostgreSQL table into a DataFrame
     val df = spark.read
-      .jdbc(jdbcUrl, "tfl_fullload", dbProperties)  // Replace "your_table_name" with your table name
+      .jdbc(jdbcUrl, "emp_data", dbProperties)  // Replace "your_table_name" with your table name
 
     println("read successful")
 
@@ -83,7 +83,7 @@ object initload_tfl {
     // Write DataFrame to Hive table
     df_cleaned.write
       .mode("overwrite")  // Use append for adding data without overwriting
-      .saveAsTable("big_data_jan2025.tfl_fullload")  // Specify your database and table name
+      .saveAsTable("big_data_jan2025.emp_data")  // Specify your database and table name
 
     // Stop SparkSession
     spark.stop()
