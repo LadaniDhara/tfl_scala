@@ -76,12 +76,12 @@ object initload_tfl {
 //    println("updated DataFrame #9: duplicates dropped")
 //
 //    // update #10 >> remove " from all routes name
-    val df_modifiedRows = df_cleaned.withColumn("route", regexp_replace(col("route"), "\"", ""))
-    println("updated DataFrame #10: leading strings in merchant names removed")
-    df_modifiedRows.show(5)
+//    val df_modifiedRows = df_cleaned.withColumn("route", regexp_replace(col("route"), "\"", ""))
+//    println("updated DataFrame #10: leading strings in merchant names removed")
+//    df_modifiedRows.show(5)
 
     // Write DataFrame to Hive table
-    df_modifiedRows.write
+    df_cleaned.write
       .mode("overwrite")  // Use append for adding data without overwriting
       .saveAsTable("big_datajan2025.TFL_UNDERGROUND_initload")  // Specify your database and table name
 
