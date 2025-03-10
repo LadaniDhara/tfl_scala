@@ -83,7 +83,7 @@ object initload_tfl {
     // Write DataFrame to Hive table
     df_cleaned.write
       .mode("overwrite")  // Use append for adding data without overwriting
-      .saveAsTable("big_datajan2025.tfl_tube_status_new")  // Specify your database and table name
+      .saveAsTable("big_datajan2025.TFL_Underground_fulload")  // Specify your database and table name
 
     // Stop SparkSession
     spark.stop()
